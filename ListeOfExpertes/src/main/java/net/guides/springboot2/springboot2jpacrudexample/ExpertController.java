@@ -9,6 +9,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +22,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
-@RestController
+@RequestMapping("/")
+@Controller
 public class ExpertController {
 	@Autowired
     private ExpertRepository expertRepository;
 	// frtch all Expertes findAll
-    @GetMapping("/expertes")
+	// frtch all Expertes findAll
+    @GetMapping("/ok")
     public List<Expert> getAllExpertes() {
         return expertRepository.findAll();
     }
-
+   
+    @GetMapping("/all")
+    public String showAll(Model model) {
+        model.addAttribute("expertes", expertRepository.findAll());
+        return "expertes";
+    }
     // frtch all Expertes findById 
     @GetMapping("/expertes/{id}")
     public ResponseEntity<Expert> getExpertesById(@PathVariable(value = "id") Long expertId)
@@ -40,7 +48,7 @@ public class ExpertController {
         return ResponseEntity.ok().body(expert);
     }
     
-    
+   
     // add a New Expert to dataBase
     @PostMapping("/addexpert")
     public Expert createExpert(@Valid @RequestBody Expert expert) {

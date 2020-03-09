@@ -1,40 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
 </head>
 <body>
-<div th:switch="${expertes}">
-            <div class="row">
-                <div>
-                    <h2 th:case="null">No Customers.</h2>
-                    <div th:case="*">
-                        <h2>Customers</h2>
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="experte : ${expertes}">
-                                    <td th:text="${expert.firstName}"></td>
-                                    <td th:text="${expert.lastName}"></td>
-                                    <td><a th:href="@{/update/{id}(id=${expert.id})}">EDIT</a></td>
-                                    <td><a th:href="@{/delete/{id}(id=${expert.id})}">DELETE</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>      
-                    <p><a href="/expertes">Add Customer</a></p>
-                </div>
-            </div>
-        </div>
+   <div th:switch="${expertes}">
+     <div class="row">
+         <div>
+             <h2 th:case="null">Dashboard</h2>
+             <div th:case="*">
+               
+                 <table border="1">
+                     <thead>
+                         <tr>
+                             <th>First name</th>
+                             <th>Last name</th>
+                             
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr th:each="experte : ${experts}">
+                             <td th:utext="${firstName}"></td>
+                             <td th:utext="${lastName}"></td>
+                             
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>      
+             <p><a href="/all">Show Experts list</a></p>
+         </div>
+     </div>
+   </div>
 
 </body>
 </html>

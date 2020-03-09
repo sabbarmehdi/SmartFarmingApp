@@ -27,7 +27,17 @@ public class Expert {
  
  
  
-    public Expert(String firstName, String lastName) {
+    public Expert(Long id, @NotBlank(message = "First name is required") String firstName,
+			@NotBlank(message = "Last name is required") String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+
+
+	public Expert(String firstName, String lastName) {
 		
 		this.firstName = firstName;
 		this.lastName = lastName;

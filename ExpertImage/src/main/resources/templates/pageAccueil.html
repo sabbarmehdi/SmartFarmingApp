@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Page accueil</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <th3>Bienvenue sur l'espace Expert</th3>
+    
+    <table>
+    <thead>
+      <tr>
+         <th> id</th>    <th> image</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+    <tr th:each="e:${image}">
+    <td th:text="${e.id}"> </td>
+    <td th:text="${e.image}"> </td>
+     
+   </tr>
+   
+     </tbody>
+   </table>
+</body>
+</html> 

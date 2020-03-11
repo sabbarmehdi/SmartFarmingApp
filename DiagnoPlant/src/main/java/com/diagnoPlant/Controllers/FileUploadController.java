@@ -1,4 +1,4 @@
-package com.project.DiagnoPlant;
+package com.diagnoPlant.Controllers;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -24,8 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.project.DiagnoPlant.storage.StorageService; 
-import com.project.DiagnoPlant.storage.StorageFileNotFoundException;
+import com.diagnoPlant.Models.Image;
+import com.diagnoPlant.Services.StorageFileNotFoundException;
+import com.diagnoPlant.Services.StorageService;
 
 @Controller
 public class FileUploadController {

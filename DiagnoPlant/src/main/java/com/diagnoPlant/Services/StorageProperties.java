@@ -1,4 +1,4 @@
-package com.project.DiagnoPlant.storage;
+package com.diagnoPlant.Services;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

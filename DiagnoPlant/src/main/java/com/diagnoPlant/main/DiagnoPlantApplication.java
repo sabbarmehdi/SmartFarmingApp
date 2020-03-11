@@ -1,4 +1,4 @@
-package com.project.DiagnoPlant;
+package com.diagnoPlant.main;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
-import com.project.DiagnoPlant.storage.StorageProperties;
-import com.project.DiagnoPlant.storage.StorageService;
+import com.diagnoPlant.Services.StorageProperties;
+import com.diagnoPlant.Services.StorageService;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)

@@ -1,4 +1,4 @@
-package com.project.DiagnoPlant.storage;
+package com.diagnoPlant.Services;
 
 @SuppressWarnings("serial")
 public class StorageFileNotFoundException extends StorageException {

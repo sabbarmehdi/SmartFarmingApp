@@ -1,9 +1,7 @@
 package com.diagnoPlant.Controllers;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +14,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.diagnoPlant.Models.Image;
 import com.diagnoPlant.Services.StorageFileNotFoundException;
 import com.diagnoPlant.Services.StorageService;
 
@@ -36,26 +31,6 @@ public class FileUploadController {
 	@Autowired
 	public FileUploadController(StorageService storageService) {
 		this.storageService = storageService;
-	}
-	
-	@RequestMapping(value = "/files/list", method = RequestMethod.GET)
-	public String listFiles(Model model) {
-		List<Path> lodf = new ArrayList<>();
-		List<Image> uris = new ArrayList<>();
-		
-		lodf = storageService.listSourceFiles(storageService.getUploadLocation());
-		for(Path pt : lodf) {
-			Image image = new Image();
-			image.setName(MvcUriComponentsBuilder
-					.fromMethodName(FileUploadController.class, "serveFile", pt.getFileName().toString())
-					.build()
-					.toString());
-			
-			image.setName(pt.getFileName().toString());
-			uris.add(image);
-		}
-		model.addAttribute("listOfEntries", uris);
-		return "list :: urlFileList";
 	}
 
 	@GetMapping("/")
@@ -85,11 +60,7 @@ public class FileUploadController {
 		
 	}
 	
-	@GetMapping("/Disabled")
-	public String getDisabled() {
-		return "Disabled";
-		
-	}
+
 
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody

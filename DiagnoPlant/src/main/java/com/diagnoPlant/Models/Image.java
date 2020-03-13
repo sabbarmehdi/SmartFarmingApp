@@ -1,17 +1,15 @@
 package com.diagnoPlant.Models;
-
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-@Entity
+    @Entity
 public class Image implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+
+		private static final long serialVersionUID = 1L;
 	@Id
 	private Long id;
-	private String name;
+	private String image;
     
 	public Image() {
 		super();
@@ -31,15 +29,12 @@ public class Image implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getImage() {
+		return image;
 	}
 
-	
-	public void setName(String name) {
-		this.name = name;
+	public void setImage(String image) {
+		this.image = image;
 	}
-
-
 
 }

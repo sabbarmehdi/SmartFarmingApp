@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ImageController {
 
 	@GetMapping("/formulaireImage")
-	public String formulaireImage (@RequestParam ("im")String im,Model model) {
-		model.addAttribute("im", im);
+	public String formulaireImage () {
+		
 		return "formulaireImage";
 	}
     
-	@GetMapping("/pageAccueil")
-	public String pageAccueil(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		return "pageAccueil";
-	}
+//	@GetMapping("/pageAccueil")
+//	public String pageAccueil(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//		model.addAttribute("name", name);
+//		return "pageAccueil";
+//	}
+	
+
 }

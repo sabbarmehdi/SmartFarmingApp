@@ -22,11 +22,11 @@
 				
 		<div th:if="${message}">
 			<h2 th:text="${message}"/>
-		</div>
+		</div>	
 				<tbody>
-					<tr th:each="file : ${listOfEntries}">
+					<tr th:each="file : ${files}">
                       <td>
-                        <a th:href="${file}" th:text="${file}">file</a>						 
+                        <a class="list-group-item" th:href="${file}" th:text="${file}">file</a>						 
                       </td>
 					</tr>
 				</tbody>

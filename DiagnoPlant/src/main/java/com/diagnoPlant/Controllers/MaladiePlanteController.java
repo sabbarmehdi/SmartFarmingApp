@@ -19,12 +19,17 @@ public class MaladiePlanteController {
 	MaladiePlanteRepository maladiePRepo;
 	
 	@RequestMapping(value="/index")
-	public String Index(Model model, @RequestParam(name="nomMaladie", defaultValue="")String nomMal) {
+	public String Index(Model model) {
 		List<MaladiePlante> mp = maladiePRepo.findAll();
-		List<MaladiePlante> nm = maladiePRepo.findByNomMaladie(nomMal);		
 		model.addAttribute("maladiePlante", mp);
-		model.addAttribute("nomMaladie", nomMal);
 		return "listMaladie";
+	}
+	
+	@RequestMapping(value="/info")
+	public String Info(Model model, @RequestParam(value="id")Long idMaladiePlante ) {
+		MaladiePlante mpl = maladiePRepo.getOne(idMaladiePlante);
+		model.addAttribute("infoMaladieP", mpl);
+		return "listResponseNamMal";
 	}
 	
 	

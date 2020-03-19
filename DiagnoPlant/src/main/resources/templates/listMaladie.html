@@ -10,13 +10,12 @@
 <title>Liste des maladie plantes</title>
 </head>
 <body>
-
-<div class="container">
-  <h2>Liste des maladie plantes</h2>
-  
-  <div th:each="m:${maladiePlante}">
-  	<a th:text="${m.nomMaladie}" th:href="@{index(nomMaladie=${nomMal/listResponseNamMal})}"></a>
-  </div>
-</div>
+	<div class="container">
+	  <h2>Liste des maladie plantes</h2>
+	  
+	  <div th:each="m:${maladiePlante}">
+	  	<a th:text="${m.nomMaladie}" th:href="@{info(id=${m.idMaladiePlante})}"></a>
+	  </div>
+	</div>
 </body>
 </html>

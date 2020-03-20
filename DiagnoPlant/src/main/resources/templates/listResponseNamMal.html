@@ -16,7 +16,6 @@
   <table class="table table-striped">
     <thead>
       <tr >
-        <th>idMaladiePlante</th>
         <th>nomMaladie</th>
         <th>symptomes</th>
         <th>causes</th>
@@ -26,7 +25,6 @@
     </thead>
     <tbody>
       <tr th:each="m:${infoMaladieP}">
-        <td th:text="${m.idMaladiePlante}"></td>
         <td th:text="${m.nomMaladie}"></td>
         <td th:text="${m.symptomes}"></td>
         <td th:text="${m.causes}" ></td>

@@ -3,6 +3,7 @@ package com.diagnoPlant.Models;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -10,8 +11,10 @@ public class Image implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue
 	private Long id;
-	private String name;
+	private boolean etatTraitement;
+	private String image;
     
 	public Image() {
 		super();
@@ -31,13 +34,32 @@ public class Image implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	/**
+	 * @return the etatTraitement
+	 */
+	public boolean isEtatTraitement() {
+		return etatTraitement;
 	}
 
-	
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * @param etatTraitement the etatTraitement to set
+	 */
+	public void setEtatTraitement(boolean etatTraitement) {
+		this.etatTraitement = etatTraitement;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 

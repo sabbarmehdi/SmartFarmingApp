@@ -8,7 +8,7 @@
 		<version>2.2.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.project</groupId>
+	<groupId>com.DiagnoPlant</groupId>
 	<artifactId>DiagnoPlant</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DiagnoPlant</name>
@@ -55,6 +55,13 @@
         </exclusion>
       </exclusions>
     </dependency>
+    
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    
     <dependency>
     	<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-configuration-processor</artifactId>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Ajouter une maladie</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+</head>
+<body>
+
+	<div class="container">
+
+		<h3>Ajouter une nouvelle maladie</h3>
+
+
+
+
+		<form th:action="@{ajoutermaladie}" method="post"
+			th:object="${maladiePlante}">
+
+			<fieldset>
+				<input placeholder="La maladie" type="text" th:field="*{nomMaladie}"
+					tabindex="2" required>
+			</fieldset>
+			<fieldset>
+				<input placeholder="Les symptomes" type="text"
+					th:field="*{symptomes}" tabindex="3" required>
+			</fieldset>
+			<fieldset>
+				<input placeholder="Les causes" type="text" th:field="*{causes}"
+					tabindex="4" required>
+			</fieldset>
+			<fieldset>
+				<textarea placeholder="Le traitement" th:field="*{traitement}"
+					tabindex="5" required></textarea>
+			</fieldset>
+			<fieldset>
+				<textarea placeholder="Les actions préventives"
+					th:field="*{actionsPreventives}" tabindex="5" required></textarea>
+			</fieldset>
+
+
+			<fieldset>
+				<button name="submit" type="submit" id="contact-submit"
+					data-submit="...Sending">Valider</button>
+
+			</fieldset>
+
+		</form>
+	</div>
+
+
+
+</body>
+</html>

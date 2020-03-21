@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Donner Avis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div>
+		<a href="pageexpert"> Retour page expert </a>
+	</div>
+	<div align="center">
+		<h1>Avis de l'expert</h1>
+	</div>
+
+	<div>
+		<a href="AjouterMaladie"> Ajouter une nouvelle maladie </a>
+	</div>
+	<br />
+
+	<div style="float: left">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom image</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="e:${image}">
+
+					<td th:text="${e.image}"></td>
+
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+
+	<div align="center">
+		<img th:src="@{pageexpert (id=${image.id})}" width="300" height="300" /><br>
+	</div>
+
+	<div>
+		<a href=""> Consulter les fiches des maladies </a>
+	</div>
+	<div>
+		<a href="ajoutermaladie"> Ajouter une nouvelle maladie </a>
+	</div>
+
+	Choisissez la maladie de la plante sur l'image
+
+	<div class="form-group row">
+
+
+		<form action="#" th:action="@{/donneravis}" name='f'
+			th:object="${magic}" method="post">
+			<!--       <form action="#" th:action="@{/avis}"  th:object="${maladiePlante}"  method="get" > -->
+
+
+
+
+			<input type="hidden" th:field="*{id}"> <input type="hidden"
+				th:field="*{image}"> <select th:field="*{maladiePlante}">
+
+				<option value=""></option>
+
+
+				<option th:each="i:${maladie}" th:value="${i.idMaladiePlante}"
+					th:text="${i.nomMaladie}"></option>
+
+			</select>
+
+
+
+			<p>Informations complementaires</p>
+			<input type="text" th:field="*{infosCompl}"> <br>
+			<button name="submit" type="submit" value="submit">Valider</button>
+
+		</form>
+
+		<!--  <form action="#" th:action="@{/donneravis(id =${maladie.idMaladiePlant})}" name='f' th:object="${magic}" method="post">
+  
+  <tbody>
+	     
+	            
+	           <tr th:each="i:${maladie}" 
+	                    th:value="${i.idMaladiePlante}" 
+	                    th:text="${i.nomMaladie}" 
+	                   >
+	            </tr>
+	            
+	     
+  
+  </tbody>
+  
+  <button name="submit" type="submit" value ="submit">Afficher la fiche de la maladie choisie </button>
+  
+  </form> -->
+
+	</div>
+
+
+</body>
+</html>

@@ -14,14 +14,14 @@
 <body>
 	<h1>Bienvenue sur la page Expert</h1>
 	
-	<tr th:each="e:${image.content}" th:unless="${e.etatTraitement}">
+	<ul th:each="e:${image.content}" th:unless="${e.etatTraitement}">
 
-		<td><a th:href="@{donneravis(id =${e.id})}"> <img
-				th:src="@{pageexpert(id =${e.id})}" width="200" height="200" />
+		<li><a th:href="@{donneravis(id =${e.id})}"> <img
+			   th:src="@{pageexpert(id =${e.id})}" width="200" height="200" />
 		</a>
-		<td th:text="${e.id}"></td>
+		<p th:text="${e.id}"></p>
 
-	</tr>
+	</ul>
 
 	<ul class="nav nav-pills">
 		<li th:each="page,status:${pages}"><a

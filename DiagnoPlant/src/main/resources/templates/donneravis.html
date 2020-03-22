@@ -13,9 +13,7 @@
 		<h1>Avis de l'expert</h1>
 	</div>
 
-	<div>
-		<a href="AjouterMaladie"> Ajouter une nouvelle maladie </a>
-	</div>
+	
 	<br />
 
 	<div style="float: left">
@@ -49,7 +47,7 @@
 		<a href="ajoutermaladie"> Ajouter une nouvelle maladie </a>
 	</div>
 
-	Choisissez la maladie de la plante sur l'image
+	  <p>Choisissez la maladie de la plante </p>
 
 	<div class="form-group row">
 
@@ -73,32 +71,13 @@
 			</select>
 
 
-
 			<p>Informations complementaires</p>
-			<input type="text" th:field="*{infosCompl}"> <br>
+			<textarea  th:field="*{infosCompl}"></textarea> <br>
 			<button name="submit" type="submit" value="submit">Valider</button>
 
 		</form>
 
-		<!--  <form action="#" th:action="@{/donneravis(id =${maladie.idMaladiePlant})}" name='f' th:object="${magic}" method="post">
-  
-  <tbody>
-	     
-	            
-	           <tr th:each="i:${maladie}" 
-	                    th:value="${i.idMaladiePlante}" 
-	                    th:text="${i.nomMaladie}" 
-	                   >
-	            </tr>
-	            
-	     
-  
-  </tbody>
-  
-  <button name="submit" type="submit" value ="submit">Afficher la fiche de la maladie choisie </button>
-  
-  </form> -->
-
+		
 	</div>
 
 

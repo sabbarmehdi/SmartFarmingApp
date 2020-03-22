@@ -30,8 +30,11 @@ import com.diagnoPlant.Repositories.ImageRepository;
 import com.diagnoPlant.Repositories.MaladiePlanteRepository;
 
 
-
-
+/**
+ * @author JAVA WARIORS
+ * Ce controleur permet de gérer l'espace de l'expert 
+ * L'expert donne son avis sur l'image à traiter
+ */
 @Controller
 public class ExpertAvisController {
 
@@ -45,9 +48,11 @@ public class ExpertAvisController {
 	private String imageDir;
 
 	/**
-	 * @author PC
+	 * 
+	 * 
 	 * Ces deux méthodes permettent de remplir de récupérer les données saisies
-	 * et de les enregistrer dans la base de données
+	 * et de les enregistrer dans la base de données pour ajouter une nouvelle
+	 * maladie 
 	 */
 	
 	
@@ -65,8 +70,16 @@ public class ExpertAvisController {
 		return "confirmationexpert";
 	}
 
+	/**
+	 * Cette méthode permet d'afficher les images dans plusieurs pages
+	 * @param model
+	 * @param page
+	 * @param size
+	 * @return
+	 */
 	@RequestMapping(value = "/pageexpert")
 
+	
 	public String Page(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "4") int size) {
 		PageRequest pageable = PageRequest.of(page, size);
@@ -77,17 +90,37 @@ public class ExpertAvisController {
         model.addAttribute("pages",new int[im.getTotalPages()]);
         return"pageexpert";
 	}
-
+    
+	
+	
+	/**
+	 * Cette méthode permet de récuperer les images d'un dossier et 
+	 * les afficher
+	 * @param id
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/pageexpert", produces = MediaType.IMAGE_JPEG_VALUE)
+	
 	@ResponseBody
 	public byte[] index(Long id) throws FileNotFoundException, IOException {
 		File f = new File(imageDir+id);
 
 		return IOUtils.toByteArray(new FileInputStream(f));
 	}
- 
+    
+	
+	
+	/**
+	 * Cette méthode permet d'afficher l'image à triater et
+	 * les champes à remplir
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/donneravis",method = RequestMethod.GET)
-
+    
 	public String Avis(@RequestParam(value ="id") Long id, Model model) {
 
 		Image img = imageRepository.getOne(id);
@@ -112,8 +145,16 @@ public class ExpertAvisController {
 	}
 	
 	
-	
-	  @RequestMapping(value = "/donneravis", method = RequestMethod.POST)
+	 /**
+	 * Cette méthode permet d'enregistrer les données saisies dans 
+	 * la base de donnée
+	 * @param m
+	 * @param model
+	 * @param maladiePlante
+	 * @return
+	 */
+	@RequestMapping(value = "/donneravis", method = RequestMethod.POST)
+	  
 	  public String Maladie (@ModelAttribute("magic") Image m,Model model,MaladiePlante maladiePlante) {
 		
 		  m.setEtatTraitement(true);

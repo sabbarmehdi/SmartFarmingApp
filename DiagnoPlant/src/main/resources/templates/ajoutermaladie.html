@@ -18,30 +18,28 @@
 		<h3>Ajouter une nouvelle maladie</h3>
 
 
-
-
 		<form th:action="@{ajoutermaladie}" method="post"
 			th:object="${maladiePlante}">
 
 			<fieldset>
 				<input placeholder="La maladie" type="text" th:field="*{nomMaladie}"
-					tabindex="2" required>
+					 required>
 			</fieldset>
 			<fieldset>
-				<input placeholder="Les symptomes" type="text"
-					th:field="*{symptomes}" tabindex="3" required>
+				<textarea placeholder="Les symptomes" 
+					th:field="*{symptomes}"  required></textarea>
 			</fieldset>
 			<fieldset>
-				<input placeholder="Les causes" type="text" th:field="*{causes}"
-					tabindex="4" required>
+				<textarea placeholder="Les causes"  th:field="*{causes}"
+					 required></textarea>
 			</fieldset>
 			<fieldset>
 				<textarea placeholder="Le traitement" th:field="*{traitement}"
-					tabindex="5" required></textarea>
+					 required></textarea>
 			</fieldset>
 			<fieldset>
 				<textarea placeholder="Les actions préventives"
-					th:field="*{actionsPreventives}" tabindex="5" required></textarea>
+					th:field="*{actionsPreventives}"  required></textarea>
 			</fieldset>
 
 

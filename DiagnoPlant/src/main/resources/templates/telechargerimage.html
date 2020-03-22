@@ -1,31 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Télécharger une image</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<title>Télécharger une image</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  	<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3)">
-     	<div class="pannel pannel-default ">
-         	<div class= "pannel-heading ">  Télécharger une image </div>
-         		<div class= "pannel-body">
-             		<form  th:action="@{telechargerimage}" method ="post"  th:object="${image}" enctype="multipart/form-data">
-             			<div class="form-group">
-			                <label  class="control-label"> Image à télécharger </label>
-			                <input type ="file" name ="photo"  class ="form-control"/>
-		                 	<span></span>
-             			</div>
-           				<div>
-             				<button type="submit" class ="btn btn-primary"> Valider</button>
-              			</div>
-         			</form>
-         		</div>
-   		</div>
-   </div>
+	<div class="container spacer">
+		<div class="pannel pannel-default ">
+			<div class="pannel-heading ">Télécharger une image</div>
+			<div class="pannel-body">
+				<form th:action="@{telechargerimage}" method="post"
+					th:object="${image}" enctype="multipart/form-data">
+					<div class="form-group">
+						<input type="file" name="photo" class="form-control" /> <span></span>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Valider</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -5,17 +5,19 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
     @Entity
-public class Utlisateur implements Serializable{
+public class Utilisateur implements Serializable{
+
+		private static final long serialVersionUID = 1L;
 	@Id
 	private Long id;
 	private String nom;
 	private String prenom;
 	private String email;
-	public Utlisateur() {
+	public Utilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Utlisateur(Long id, String nom, String prenom, String email) {
+	public Utilisateur(Long id, String nom, String prenom, String email) {
 		super();
 		this.id = id;
 		this.nom = nom;

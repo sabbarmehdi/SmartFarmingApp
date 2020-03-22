@@ -15,17 +15,23 @@ public class Image implements Serializable{
 	private Long id;
 	private boolean etatTraitement;
 	private String image;
-    
+	/**
+	 * @param image
+	 */
 	public Image() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
+	/**
+	 * @param id
+	 */
 	public Image(Long id) {
 		super();
 		this.id = id;
 	}
-
+	/**
+	 * @return the id
+	 */
 	public Long getId() {
 		return id;
 	}

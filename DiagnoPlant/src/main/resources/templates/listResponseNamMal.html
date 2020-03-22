@@ -2,39 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Info MaladiePlante</title>
 </head>
 <body>
-	
-<div class="container">
-  
-  <table class="table table-striped">
-    <thead>
-      <tr >
-        <th>nomMaladie</th>
-        <th>symptomes</th>
-        <th>causes</th>
-        <th>traitement</th>
-        <th>actionsPreventives</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="m:${infoMaladieP}">
-        <td th:text="${m.nomMaladie}"></td>
-        <td th:text="${m.symptomes}"></td>
-        <td th:text="${m.causes}" ></td>
-        <td th:text="${m.traitement}"></td>
-        <td th:text="${m.actionsPreventives}"></td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-	
+	<div class="container spacer">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Liste des maladie plantes</div>
+			<div class="panel-body">
+				<table class="table">
+						<tr>
+							<th>nomMaladie</th>
+							<th>symptomes</th>
+							<th>causes</th>
+							<th>traitement</th>
+							<th>actionsPreventives</th>
+						</tr>
+						<tr th:each="m:${infoMaladieP}">
+							<td th:text="${m.nomMaladie}"></td>
+							<td th:text="${m.symptomes}"></td>
+							<td th:text="${m.causes}"></td>
+							<td th:text="${m.traitement}"></td>
+							<td th:text="${m.actionsPreventives}"></td>
+						</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

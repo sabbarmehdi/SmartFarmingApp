@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
 <title>Liste des maladie plantes</title>
 </head>
 <body>
-	<div class="container"  >
-	  <h2>Liste des maladie plantes</h2>
-	  <form th:action="@{index}" method="GET">
-	  	<div class="mb-3">
-	  		<label></label>
-	  		<input type="text" name="Chercher">
-	  		<button class="btn btn-primary">Chercher</button>
-	  	</div>
-	  </form>
-	  
-	  <div th:each="m:${pageMaladiePlante.content}">
-	  	<a th:text="${m.nomMaladie}" th:href="@{info(id=${m.idMaladiePlante})}"></a>
-	  </div>
-	  	<ul class="nav nav-pills">
-	  		<li th:each="page,status:${pages}">
-	  			<a  th:class="${status.index==currentPage}? 'btn btn-primary':'btn' " 
-	  				th:text="${status.index}" 
-					th:href="@{index(page=${status.index}, size=${size})}"></a>
-	  		</li>
-	  	</ul>
+	<div class="container spacer">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Liste des maladies plantes</div>
+			<div class="panel-body">
+				<form th:action="@{index}" method="GET">
+					<div class="mb-3">
+						<label></label> <input type="text" name="Chercher"
+							th:value="${Chercher}">
+						<button class="btn btn-primary">Chercher</button>
+					</div>
+				</form>
+				<div>
+					<nav aria-label="...">
+						<ul class="pager">
+							<li class="next"><a th:href="@{index}"> <span
+									aria-hidden="true">&larr;</span> index
+							</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div th:each="m:${pageMaladiePlante.content}">
+					<a th:text="${m.nomMaladie}"
+						th:href="@{info(id=${m.idMaladiePlante})}"></a>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-pills">
+			<li th:each="page,status:${pages}"><a
+				th:class="${status.index==currentPage}? 'btn btn-primary':'btn' "
+				th:text="${status.index}"
+				th:href="@{index(page=${status.index},Chercher=${Chercher}, size=${size})}">
+			</a></li>
+		</ul>
 	</div>
 </body>
 </html>

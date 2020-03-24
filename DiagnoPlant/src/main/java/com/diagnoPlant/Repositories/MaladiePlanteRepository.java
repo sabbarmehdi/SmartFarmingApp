@@ -1,4 +1,4 @@
-package com.diagnoPlant.Repositorys;
+package com.diagnoPlant.Repositories;
 
 import com.diagnoPlant.Models.MaladiePlante;
 

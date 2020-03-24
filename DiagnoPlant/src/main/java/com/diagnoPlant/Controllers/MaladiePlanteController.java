@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.diagnoPlant.Models.MaladiePlante;
-import com.diagnoPlant.Repositorys.MaladiePlanteRepository;
+import com.diagnoPlant.Repositories.MaladiePlanteRepository;
 
 /**
  * This class used to manage the plant disease list

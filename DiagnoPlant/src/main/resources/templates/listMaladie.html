@@ -18,7 +18,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">Liste des maladies plantes</div>
 			<div class="panel-body">
-				<form th:action="@{index}" method="GET">
+				<form th:action="@{listMaladiePlant}" method="GET">
 					<div class="mb-3">
 						<label></label> <input type="text" name="Chercher"
 							th:value="${Chercher}">
@@ -28,8 +28,8 @@
 				<div>
 					<nav aria-label="...">
 						<ul class="pager">
-							<li class="next"><a th:href="@{index}"> <span
-									aria-hidden="true">&larr;</span> index
+							<li class="next"><a th:href="@{listMaladiePlant}"> <span
+									aria-hidden="true">&larr;</span> Retour
 							</a></li>
 						</ul>
 					</nav>
@@ -46,7 +46,7 @@
 			<li th:each="page,status:${pages}"><a
 				th:class="${status.index==currentPage}? 'btn btn-primary':'btn' "
 				th:text="${status.index}"
-				th:href="@{index(page=${status.index},Chercher=${Chercher}, size=${size})}">
+				th:href="@{listMaladiePlant(page=${status.index},Chercher=${Chercher}, size=${size})}">
 			</a></li>
 		</ul>
 	</div>

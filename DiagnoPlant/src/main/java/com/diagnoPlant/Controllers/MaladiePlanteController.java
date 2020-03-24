@@ -20,7 +20,7 @@ import com.diagnoPlant.Repositorys.MaladiePlanteRepository;
  */
 
 @Controller
-@RequestMapping(value="/maladiePlantes")
+@RequestMapping(value="/maladiePlante")
 public class MaladiePlanteController {
 	@Autowired
 	MaladiePlanteRepository maladiePRepo;
@@ -32,8 +32,8 @@ public class MaladiePlanteController {
 	 * @param page
 	 * @param size
 	 */
-	@GetMapping(value="/index")
-	public String Index(Model model,
+	@GetMapping(value="/listMaladiePlant")
+	public String listOfNomMaladie(Model model,
 			@RequestParam(name="page",defaultValue="0")int page ,
 			@RequestParam(name="size", defaultValue="5")int size,
 			@RequestParam(name="Chercher", defaultValue="")String Chercher) {
@@ -48,15 +48,15 @@ public class MaladiePlanteController {
 	}
 	
 	/**
-	 * This method get you the info of plant disease
+	 * This method can get you all info of plant disease
 	 * @author lahcen
 	 * @param idMaladiePlante
 	 * 
 	 */
 	@GetMapping(value="/info")
-	public String Info(Model model, @RequestParam(value="id")Long idMaladiePlante ) {
+	public String info(Model model, @RequestParam(value="id")Long idMaladiePlante ) {
 		MaladiePlante mpl = maladiePRepo.getOne(idMaladiePlante);
 		model.addAttribute("infoMaladieP", mpl);
-		return "listResponseNamMal";
+		return "ficheinfo";
 	}
 }

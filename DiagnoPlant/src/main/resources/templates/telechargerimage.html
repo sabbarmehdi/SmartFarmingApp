@@ -3,23 +3,21 @@
 <head>
 <title>Télécharger une image</title>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/css/myStyle.css"
-	th:href="@{/css/myStyle.css}" />
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
 </head>
 <body>
 	<div class="container spacer">
-		<div class="pannel pannel-default ">
-			<div class="pannel-heading ">Télécharger une image</div>
-			<div class="pannel-body">
+		<div class="panel panel-primary">
+			<div class="panel-heading ">Télécharger une image</div>
+			<div class="panel-body">
 				<form th:action="@{telechargerimage}" method="post"
 					th:object="${image}" enctype="multipart/form-data">
 					<div class="form-group">

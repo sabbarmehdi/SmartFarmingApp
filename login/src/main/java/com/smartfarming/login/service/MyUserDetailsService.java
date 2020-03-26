@@ -2,6 +2,7 @@ package com.smartfarming.login.service;
 
 import com.smartfarming.login.model.Role;
 import com.smartfarming.login.model.User;
+import com.smartfarming.login.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,4 +43,5 @@ public class MyUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
                 user.getActive(),true, true, true, authorities);
     }
+
 }

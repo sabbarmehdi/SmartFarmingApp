@@ -1,6 +1,4 @@
-/** 
- * 
- */
+
 package com.Project.PlantDiagno;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class User {
+public class Inscription {
 	//Declaration of variables
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
@@ -24,8 +22,8 @@ public class User {
 	private String Password;
 	private String Confirm_Password;
 		
-	protected User() {}
-	public User(String Username,String Email,String Fonction, String Password, String Confirm_Password  ) {
+	protected Inscription() {}
+	public Inscription(String Username,String Email,String Fonction, String Password, String Confirm_Password  ) {
 		// TODO Auto-generated constructor stub
 		this.Username=Username;
 		this.Email=Email;
@@ -55,7 +53,7 @@ public class User {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public  void setId(Long id) {
 		this.id = id;
 	}
 	/**
@@ -134,3 +132,4 @@ public class User {
 	
 	
 }
+

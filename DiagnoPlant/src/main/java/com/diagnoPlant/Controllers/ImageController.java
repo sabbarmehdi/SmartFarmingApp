@@ -2,15 +2,21 @@ package com.diagnoPlant.Controllers;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+
 import com.diagnoPlant.Models.Image;
 import com.diagnoPlant.Repositorys.ImageRepository;
 
@@ -19,7 +25,7 @@ import com.diagnoPlant.Repositorys.ImageRepository;
  * @author lahcen
  *
  */
-@Controller
+@RestController
 public class ImageController {
 	@Autowired
 	private ImageRepository imageRepository;
@@ -27,29 +33,32 @@ public class ImageController {
 	@Value("${dir.images}")
 	private String imageDir;
 	
-	
-	@GetMapping(value ="/image")
-	public String telechargerImage(Model model) {
-		Image mg = new Image();
-		model.addAttribute("image",mg );
-  
-		return"telechargerimage";
-	}
-	  
-	@PostMapping(value ="/telechargerimage")
-	public String validerImage(Image im,@RequestParam(name="photo")MultipartFile file) throws IllegalStateException, IOException {
-  
-		im.setEtatTraitement(false);
-  
+	  	
+	@PostMapping("/telechargerimage")
+    public ResponseEntity<?> uploadFile(
+            @RequestParam("file") MultipartFile file) { 
+    	
+		Image im = new Image();
 		imageRepository.save(im);
-		if(!file.isEmpty()) {
-			im.setImage(file.getOriginalFilename());
+    	im.setEtatTraitement(false);
+    	
+    	
+        if (file.isEmpty()) {
+            return new ResponseEntity<>("veuillez sélectionner une image !", HttpStatus.OK);
+        }
+
+        try {
+        	im.setImage(file.getOriginalFilename());
 			file.transferTo(new File(imageDir+im.getId()));
-		} imageRepository.save(im);
-   
-	return"telechargerimage";
-	}
-	
+			imageRepository.save(im);
+
+        } catch (IOException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>("Votre image a bien été enregistrée !", new HttpHeaders(), HttpStatus.OK);
+
+    }
 	
 }
 

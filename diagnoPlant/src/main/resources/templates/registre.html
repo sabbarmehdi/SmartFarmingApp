@@ -48,6 +48,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="#" th:action="@{registration}" th:object="${user}" method="post">
+					<h2><span class="text-success" th:utext="${successMessage}"></span></h2>
 					<!--===============================================================================================-->
 					<nav class="navbar navbar">
 						<div class="container-fluid" style="margin: 0px 333px">
@@ -58,7 +59,7 @@
 						</div>
 					</nav>
 					<!--===============================================================================================-->
-
+				
 					<span class="login100-form-title p-b-43"> Sing up to continue </span>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid name is required" >
@@ -98,7 +99,6 @@
 						<button class="login100-form-btn">Sing up</button>
 					</div>
 					
-					<h2><span class="text-success" th:utext="${successMessage}"></span></h2>	
 					
 				</form>
 

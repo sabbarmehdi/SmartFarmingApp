@@ -44,7 +44,7 @@
 			<div th:text="${userName}"></div>
 			<div class="panel-heading ">Télécharger une image</div>
 			<div class="panel-body">
-				<form th:action="@{home(idUser=${idUser})}"
+				<form th:action="@{image(idUser=${idUser})}"
 					  method="post" th:object="${image}" 
 					  enctype="multipart/form-data">
 					<div class="form-group">

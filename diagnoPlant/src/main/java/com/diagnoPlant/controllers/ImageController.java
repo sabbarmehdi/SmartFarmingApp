@@ -1,4 +1,4 @@
-package com.diagnoPlant.Controllers;
+package com.diagnoPlant.controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import com.diagnoPlant.Models.Image;
-import com.diagnoPlant.Models.User;
-import com.diagnoPlant.Repositorys.ImageRepository;
-import com.diagnoPlant.Repositorys.UserRepository;
+
+import com.diagnoPlant.models.Image;
+import com.diagnoPlant.models.User;
+import com.diagnoPlant.repositories.ImageRepository;
+import com.diagnoPlant.repositories.UserRepository;
 
 /**
  * This class used to upload image and store it in a folder 
@@ -35,12 +36,16 @@ public class ImageController {
 	public String telechargerImage(Model model) {
 		Image mg = new Image();
 		model.addAttribute("image",mg );
+		
+		
   
 		return"telechargerimage";
 	}
 	  
 	@PostMapping(value ="/image")
-	public String validerImage(Image im,@RequestParam(name="photo")MultipartFile file,@RequestParam(name="idUser")Long idUser) throws IllegalStateException, IOException {
+	public String validerImage(Image im,@RequestParam(name="photo")MultipartFile file,
+										@RequestParam(name="idUser")Long idUser) 
+												throws IllegalStateException, IOException {
   
 		im.setEtatTraitement(false);
 		

@@ -1,13 +1,10 @@
 package com.project.DiagnoPlant;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootTest
+@SpringBootApplication
 class DiagnoPlantApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+
 
 }

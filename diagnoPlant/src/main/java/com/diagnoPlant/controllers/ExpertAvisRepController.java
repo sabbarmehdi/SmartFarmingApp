@@ -1,4 +1,4 @@
-package com.diagnoPlant.Controllers;
+package com.diagnoPlant.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,17 +21,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.diagnoPlant.Models.Image;
-import com.diagnoPlant.Models.MaladiePlante;
-import com.diagnoPlant.Models.User;
-import com.diagnoPlant.Repositorys.ImageRepository;
-import com.diagnoPlant.Repositorys.MaladiePlanteRepository;
-import com.diagnoPlant.Services.UserService;
+
+import com.diagnoPlant.models.Image;
+import com.diagnoPlant.models.MaladiePlante;
+import com.diagnoPlant.models.User;
+import com.diagnoPlant.repositories.ImageRepository;
+import com.diagnoPlant.repositories.MaladiePlanteRepository;
+import com.diagnoPlant.services.UserService;
 
 @Controller
 public class ExpertAvisRepController {
 	
-	@Autowired(required=true)
+	@Autowired
 	private ImageRepository imageRepository;
 	
 	@Autowired

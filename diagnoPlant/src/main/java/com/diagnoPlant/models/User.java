@@ -1,4 +1,4 @@
-package com.diagnoPlant.Models;
+package com.diagnoPlant.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

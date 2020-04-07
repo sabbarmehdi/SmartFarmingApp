@@ -1,4 +1,4 @@
-package com.diagnoPlant.Controllers;
+package com.diagnoPlant.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.diagnoPlant.Models.MaladiePlante;
-import com.diagnoPlant.Repositorys.MaladiePlanteRepository;
+import com.diagnoPlant.models.MaladiePlante;
+import com.diagnoPlant.repositories.MaladiePlanteRepository;
 
 
 @Controller

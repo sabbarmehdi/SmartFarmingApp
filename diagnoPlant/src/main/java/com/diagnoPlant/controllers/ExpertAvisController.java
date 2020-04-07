@@ -1,4 +1,4 @@
-package com.diagnoPlant.Controllers;
+package com.diagnoPlant.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.diagnoPlant.Models.Image;
-import com.diagnoPlant.Models.MaladiePlante;
-import com.diagnoPlant.Repositorys.ImageRepository;
-import com.diagnoPlant.Repositorys.MaladiePlanteRepository;
+import com.diagnoPlant.models.Image;
+import com.diagnoPlant.models.MaladiePlante;
+import com.diagnoPlant.repositories.ImageRepository;
+import com.diagnoPlant.repositories.MaladiePlanteRepository;
 
 
 /**
@@ -38,10 +38,10 @@ import com.diagnoPlant.Repositorys.MaladiePlanteRepository;
 @Controller
 public class ExpertAvisController {
 
-	@Autowired(required=true)
+	@Autowired
 	private MaladiePlanteRepository maladiePlanteRepository;
 
-	@Autowired(required=true)
+	@Autowired
 	private ImageRepository imageRepository;
 	
 	@Value("${dir.images}")
@@ -155,13 +155,10 @@ public class ExpertAvisController {
 	 */
 	@RequestMapping(value = "/donneravis", method = RequestMethod.POST)
 	  
-	  public String Maladie (@ModelAttribute("magic") Image m,Model model,MaladiePlante maladiePlante) {
+	  public String Maladie (@ModelAttribute("magic") Image m) {
 		
 		  m.setEtatTraitement(true);
 		  imageRepository.save(m);
-		 System.out.println("image"+m.getUser().getId());
-		  
-		  
 		  
 	  return "confirmationexpert"; }
  

@@ -1,4 +1,4 @@
-package com.diagnoPlant.Controllers;
+package com.diagnoPlant.controllers;
 
 import javax.validation.Valid;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.diagnoPlant.Models.User;
-import com.diagnoPlant.Services.UserService;
+import com.diagnoPlant.models.User;
+import com.diagnoPlant.services.UserService;
 
 @Controller
 public class LoginController { 
@@ -61,13 +61,11 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUserName(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getUserName() + "/" +
-                user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        modelAndView.addObject("userName", "Welcome " + user.getUserName() + 
+        		"  Please upload an image of your tomato plant to detect disease");
         modelAndView.addObject("idUser",user.getId());
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("/telechargerimage");
         return modelAndView;
     }
-	
-
 }

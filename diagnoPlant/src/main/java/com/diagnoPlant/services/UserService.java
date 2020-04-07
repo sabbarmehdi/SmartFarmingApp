@@ -1,14 +1,13 @@
-package com.diagnoPlant.Services;
+package com.diagnoPlant.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-import com.diagnoPlant.Models.Role;
-import com.diagnoPlant.Models.User;
-import com.diagnoPlant.Repositorys.RoleRepository;
-import com.diagnoPlant.Repositorys.UserRepository;
+import com.diagnoPlant.models.Role;
+import com.diagnoPlant.models.User;
+import com.diagnoPlant.repositories.RoleRepository;
+import com.diagnoPlant.repositories.UserRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -19,7 +18,7 @@ public class UserService {
     private RoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     
-  
+
     @Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
@@ -35,13 +34,15 @@ public class UserService {
         return userRepository.findByUserName(userName);
     }
 
-    public User findByPassword(String password){ return userRepository.findByPassword(password);}
+    public User findByPassword(String password){ 
+    	return userRepository.findByPassword(password);
+	}
 
    public User saveUser(User user){
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
-       Role userRole = roleRepository.findByRole("ADMIN");
-       user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-       return userRepository.save(user);
+        Role userRole = roleRepository.findByRole("ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        return userRepository.save(user);
    }
 }

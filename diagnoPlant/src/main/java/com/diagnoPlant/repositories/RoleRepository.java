@@ -1,9 +1,9 @@
-package com.diagnoPlant.Repositorys;
+package com.diagnoPlant.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.diagnoPlant.Models.Role;
+import com.diagnoPlant.models.Role;
 
 
 @Repository

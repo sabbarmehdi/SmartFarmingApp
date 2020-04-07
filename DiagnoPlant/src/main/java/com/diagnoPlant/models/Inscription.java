@@ -1,136 +1,82 @@
 package com.diagnoPlant.models;
 
 
+import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author hp
+ * @param <Login>
  * 
  *
  */
 @Entity
-public class Inscription {
+@Table(name = "inscription")
+public class Inscription implements Serializable{
 	//Declaration of variables
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private Long id;
-	private String Username;
-	private String Email;
-	private String Fonction;
-	private String Password;
-	private String Confirm_Password;
-		
-	protected Inscription() {}
-	public Inscription(String Username,String Email,String Fonction, String Password, String Confirm_Password  ) {
-		// TODO Auto-generated constructor stub
-		this.Username=Username;
-		this.Email=Email;
-		this.Fonction=Fonction;
-		this.Password=Password;
-		this.Confirm_Password=Confirm_Password;
-		
-				
-	}
+	private String username;
+	private String email;
+	private String fonction;
+	private String password;
+	@Transient
+    private String passwordConfirm;
 
-	/**
-	 * @param args
-	 */
-	@Override
-	  public String toString() {
-	    return String.format(
-	        "User[id=%d, Username='%s', Email='%s', Fonction='%s', Password='%s',Confirm_Password='%s']",
-	        id,Username,Email,Fonction,Password,Confirm_Password );
-	    
-}
-	/**
-	 * @return the id
-	 */
+    @ManyToMany
+    private Set<Role> roles;
+    
 	public Long getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
-	public  void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * @return the username
-	 */
 	public String getUsername() {
-		return Username;
+		return username;
 	}
-	/**
-	 * @param username the username to set
-	 */
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
-		return Email;
+		return email;
 	}
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
-	/**
-	 * @return the fonction
-	 */
 	public String getFonction() {
-		return Fonction;
+		return fonction;
 	}
-	/**
-	 * @param fonction the fonction to set
-	 */
 	public void setFonction(String fonction) {
-		Fonction = fonction;
+		this.fonction = fonction;
 	}
-	/**
-	 * @return the password
-	 */
 	public String getPassword() {
-		return Password;
+		return password;
 	}
-	/**
-	 * @param password the password to set
-	 */
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
-	/**
-	 * @return the confirm_Password
-	 */
-	public String getConfirm_Password() {
-		return Confirm_Password;
+	public String getPasswordConfirm() {
+		return passwordConfirm;
 	}
-	/**
-	 * @param confirm_Password the confirm_Password to set
-	 */
-	public void setConfirm_Password(String confirm_Password) {
-		Confirm_Password = confirm_Password;
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
-	public void setEnabled(boolean b) {
-		// TODO Auto-generated method stub
-		
+	public Set<Role> getRoles() {
+		return roles;
 	}
-	public void setConfirmationToken(String string) {
-		// TODO Auto-generated method stub
-		
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
-	public String getConfirmationToken() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 	
 }
 

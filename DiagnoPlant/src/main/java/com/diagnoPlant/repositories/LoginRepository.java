@@ -1,12 +1,9 @@
 package com.diagnoPlant.repositories;
 
-import org.springframework.data.repository.CrudRepository;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.diagnoPlant.models.Login;
 
-public interface LoginRepository extends CrudRepository <Login, Long> {
+public interface LoginRepository extends JpaRepository <Login, Long> {
    
-    Login findById(String id);
-	void delete(Long id);
-	void update(Login login);
+   
 }

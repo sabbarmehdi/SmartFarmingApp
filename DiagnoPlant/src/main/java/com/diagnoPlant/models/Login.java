@@ -1,38 +1,35 @@
 package com.diagnoPlant.models;
+import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-public class Login {
+@Table(name = "login")
+public class Login implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	 private Long id;
-	 private String Username;
+	 private String username;
 	 private String password;
-	 
-		
-	protected Login() {}
-	public Login(String Username, String password) {
-		
-		this.Username=Username;
-		this.password=password;
-		
+	public Long getId() {
+		return id;
 	}
-	
-	 @Override
-	  public String toString() {
-	    return String.format(
-	        "Login[username='%s', password='%s']",
-	         Username, password);
-	  }
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getUsername() {
-		return Username;
+		return username;
 	}
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -40,12 +37,6 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public static void setId(Long id2) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 	
-
 }

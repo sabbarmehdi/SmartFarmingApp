@@ -1,57 +1,64 @@
 package com.diagnoPlant.controllers;
-
-/**
- * 
- */
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-
-/**
- * @author hp
- *
- */
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import com.diagnoPlant.models.Inscription;
-import com.diagnoPlant.repositories.UserRepository;
-/**
- * @author hp
- * @param <userRepository>
- *
- */
-@RestController
-public class InscriptionControleur<userRepository> {
+import com.diagnoPlant.services.InscriptionService;
+import com.diagnoPlant.services.SecurityService;
+import com.diagnoPlant.validator.InscriptionValidator;
+
+@Controller
+public class InscriptionControleur {
 	
-	   @Autowired 
-		private UserRepository userRepository;
-	
-	   
-	   @GetMapping(path="Inscription/id") // 
-	   public Optional<Inscription> getOne(@PathVariable(name="id")Long id){
-           return userRepository.findById(id);
-	   }
-	    	    
-	   
-	   @PostMapping(path="Inscription")
-	   public Inscription save(@RequestBody Inscription Inscription){
-		   return userRepository.save(Inscription);
-       }
-	   @PutMapping(path="Inscription/{id}")
-	   public Inscription update(@PathVariable(name="id")Long id, @RequestBody Inscription inscription){
-	   inscription.setId(id);
-       return userRepository.save(inscription);
-	   }
-	   @DeleteMapping(path="Inscription/{id}")
-	   public void delete(@PathVariable("id")Long id) {
-		   userRepository.delete(id);
-}
+    @Autowired
+    private InscriptionService inscriptionService;
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private InscriptionValidator inscriptionValidator;
+
+    @GetMapping("/inscription")
+    public String registration(Model model) {
+        model.addAttribute("userForm", new Inscription());
+
+        return "inscription";
+    }
+
+    @PostMapping("/inscription")
+    public String registration(@ModelAttribute("userForm") Inscription userForm, BindingResult bindingResult) {
+        inscriptionValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "inscription";
+        }
+
+        inscriptionService.save(userForm);
+
+        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
+
+        return "redirect:/welcome";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+
+        return "login";
+    }
+
+    @GetMapping({"/", "/welcome"})
+    public String welcome(Model model) {
+        return "welcome";
+    }
 }

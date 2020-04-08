@@ -76,8 +76,11 @@
 							</a>
 						</div>
 					</div>
+					
+					<div align="center" th:if="${param.error}">
+            			<p style="font-size: 20; color: #FF1C19;">User Name or Password invalid, please verify</p>
+        			</div>
 			
-
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login

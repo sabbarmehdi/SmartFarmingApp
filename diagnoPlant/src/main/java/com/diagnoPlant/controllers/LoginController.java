@@ -65,7 +65,7 @@ public class LoginController {
         		"  Please upload an image of your tomato plant to detect disease");
         modelAndView.addObject("idUser",user.getId());
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("/telechargerimage");
+        modelAndView.setViewName("telechargerimage");
         return modelAndView;
     }
 }

@@ -1,0 +1,5 @@
+Le lien du modèle :
+https://drive.google.com/open?id=1mShKTs3ZVGuNzLY5m_NIhntzDm76QoR5
+
+1- Télécharger le modèle
+2- Copier et coller le modèle dans : main/ressources/static.

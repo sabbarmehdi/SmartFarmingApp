@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Info MaladiePlante</title>
+</head>
+<!--===============================================================================================-->	
+<nav class="navbar navbar-green default-color">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">DiagnoPlant</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{/pageexpert}">Home</a></li>
+      <li class="active"><a  th:href="@{/listMaladiePlant}">Consulter les fiches des maladies</a></li>
+      <li><a th:href="@{/ajoutermaladie}">Ajouter une nouvelle maladie</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+<!--===============================================================================================-->	
+
+
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">info de maladie plante</div>
+			<div class="panel-body">
+				<table class="table">
+						<tr>
+							<th>Nom de Maladie</th>
+							<th>Symptomes</th>
+							<th>Causes</th>
+							<th>Traitement</th>
+							<th>Actions Preventives</th>
+						</tr>
+						<tr th:each="m:${infoMaladieP}">
+							<td th:text="${m.nomMaladie}"></td>
+							<td th:text="${m.symptomes}"></td>
+							<td th:text="${m.causes}"></td>
+							<td th:text="${m.traitement}"></td>
+							<td th:text="${m.actionsPreventives}"></td>
+						</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
